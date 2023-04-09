@@ -16,6 +16,7 @@ $app->group('/teste', function (\Slim\Routing\RouteCollectorProxy $group){
 $app->group('/puzzle', function (\Slim\Routing\RouteCollectorProxy $group){
    $group->post('/', \App\Controller\PuzzleController::class.':gera_8_puzzle');
    $group->post('/embaralhar', \App\Controller\PuzzleController::class.':embaralha');
+   $group->post('/manhattan', \App\Controller\PuzzleController::class.':distanciaManhattan');
 });
 
 $app->group('/game-setup-webservice/paletas', function (\Slim\Routing\RouteCollectorProxy $group) {

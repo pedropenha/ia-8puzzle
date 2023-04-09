@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Services\HttpResponse;
+use App\Services\Util;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Model\Puzzle;
@@ -74,6 +75,18 @@ final class PuzzleController extends Controller
             if ($puzzle->estadoFinal[$i] !== $puzzle->embaralhado[$i])
                 $puzzle->pecasForaLugar++;
         }
+    }
+
+    public function distanciaManhattan(Request $request, Response $response, array $args)
+    {
+        return $this->encapsular_response(function($request, $response, $args){
+            $data = $request->getParsedBody();
+            $estadoAtual = $data['embaralhado'];
+            $estadoFinal = $data['estadoFinal'];
+
+            return HttpResponse::status200(['distanciaTotal' => Util::manhattanDistance($estadoFinal, $estadoAtual)]);
+
+        }, $request, $response, $args);
     }
 
 }

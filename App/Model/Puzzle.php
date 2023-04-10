@@ -5,105 +5,123 @@ namespace App\Model;
 final class Puzzle
 {
 
-    public $geracao;
-    public $pecasForaLugar;
-    public $f;
-    public $estadoFinal;
-    public $embaralhado;
+  public int $geracao;
+  public int $pecasForaLugar;
+  public float $f;
+  public string $estadoFinal;
+  public string $estadoInicial;
+  public string $estadoAtual;
 
-    /**
-     * @param $geracao
-     * @param $pecasForaLugar
-     * @param $f
-     * @param $estadoFinal
-     * @param $embaralhado
-     */
-    public function __construct($geracao, $pecasForaLugar, $f, $estadoFinal, $embaralhado)
-    {
-        $this->geracao = $geracao;
-        $this->pecasForaLugar = $pecasForaLugar;
-        $this->f = $f;
-        $this->estadoFinal = $estadoFinal;
-        $this->embaralhado = $embaralhado;
-    }
+  /**
+   * @param int $geracao
+   * @param int $pecasForaLugar
+   * @param float $f
+   * @param string $estadoFinal
+   * @param string $estadoInicial
+   */
+  public function __construct(string $estadoFinal, string $estadoInicial)
+  {
+    $this->geracao = 0;
+    $this->pecasForaLugar = 0;
+    $this->f = 0.0;
+    $this->estadoFinal = $estadoFinal;
+    $this->estadoInicial = $estadoInicial;
+    $this->estadoAtual = $estadoInicial;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getGeracao()
-    {
-        return $this->geracao;
-    }
+  /**
+   * @return int
+   */
+  public function getGeracao(): int
+  {
+    return $this->geracao;
+  }
 
-    /**
-     * @param mixed $geracao
-     */
-    public function setGeracao($geracao): void
-    {
-        $this->geracao = $geracao;
-    }
+  /**
+   * @param int $geracao
+   */
+  public function setGeracao(int $geracao): void
+  {
+    $this->geracao = $geracao;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getPecasForaLugar()
-    {
-        return $this->pecasForaLugar;
-    }
+  /**
+   * @return int
+   */
+  public function getPecasForaLugar(): int
+  {
+    return $this->pecasForaLugar;
+  }
 
-    /**
-     * @param mixed $pecasForaLugar
-     */
-    public function setPecasForaLugar($pecasForaLugar): void
-    {
-        $this->pecasForaLugar = $pecasForaLugar;
-    }
+  /**
+   * @param int $pecasForaLugar
+   */
+  public function setPecasForaLugar(int $pecasForaLugar): void
+  {
+    $this->pecasForaLugar = $pecasForaLugar;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getF()
-    {
-        return $this->f;
-    }
+  /**
+   * @return float
+   */
+  public function getF(): float
+  {
+    return $this->f;
+  }
 
-    /**
-     * @param mixed $f
-     */
-    public function setF(): void
-    {
-        $this->f = $this->geracao + $this->pecasForaLugar;
-    }
+  /**
+   * @param float $f
+   */
+  public function setF(float $f): void
+  {
+    $this->f = $f;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getEstadoFinal()
-    {
-        return $this->estadoFinal;
-    }
+  /**
+   * @return string
+   */
+  public function getEstadoFinal(): string
+  {
+    return $this->estadoFinal;
+  }
 
-    /**
-     * @param mixed $estadoFinal
-     */
-    public function setEstadoFinal($estadoFinal): void
-    {
-        $this->estadoFinal = $estadoFinal;
-    }
+  /**
+   * @param string $estadoFinal
+   */
+  public function setEstadoFinal(string $estadoFinal): void
+  {
+    $this->estadoFinal = $estadoFinal;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getEmbaralhado()
-    {
-        return $this->embaralhado;
-    }
+  /**
+   * @return string
+   */
+  public function getEstadoInicial(): string
+  {
+    return $this->estadoInicial;
+  }
 
-    /**
-     * @param mixed $embaralhado
-     */
-    public function setEmbaralhado($embaralhado): void
-    {
-        $this->embaralhado = $embaralhado;
-    }
+  /**
+   * @param string $estadoInicial
+   */
+  public function setEstadoInicial(string $estadoInicial): void
+  {
+    $this->estadoInicial = $estadoInicial;
+  }
+
+  /**
+   * @return string
+   */
+  public function getEstadoAtual(): string
+  {
+    return $this->estadoAtual;
+  }
+
+  /**
+   * @param string $estadoAtual
+   */
+  public function setEstadoAtual(string $estadoAtual): void
+  {
+    $this->estadoAtual = $estadoAtual;
+  }
 }

@@ -17,18 +17,7 @@ $app->group('/puzzle', function (\Slim\Routing\RouteCollectorProxy $group){
    $group->post('/', \App\Controller\PuzzleController::class.':gera_8_puzzle');
    $group->post('/embaralhar', \App\Controller\PuzzleController::class.':embaralha');
    $group->post('/manhattan', \App\Controller\PuzzleController::class.':distanciaManhattan');
-});
-
-$app->group('/game-setup-webservice/paletas', function (\Slim\Routing\RouteCollectorProxy $group) {
-
-    $group->get('/', \App\Controller\PaletaCoresController::class.':buscar_paletas');
-
-    $group->get('/{id}', \App\Controller\PaletaCoresController::class.':buscar_paletas_por_id');
-
-    $group->post('/edit', \App\Controller\PaletaCoresController::class.':editar_paleta');
-
-    $group->post('/', \App\Controller\PaletaCoresController::class.':inserir_paleta');
-
+   $group->post('/dfs', \App\Controller\PuzzleController::class.':dfs');
 });
 
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {

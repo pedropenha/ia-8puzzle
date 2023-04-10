@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\BuscaEmProfundidade;
 use App\Services\HttpResponse;
 use App\Services\Util;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -87,6 +88,25 @@ final class PuzzleController extends Controller
             return HttpResponse::status200(['distanciaTotal' => Util::manhattanDistance($estadoFinal, $estadoAtual)]);
 
         }, $request, $response, $args);
+    }
+
+    public function dfs(Request $request, Response $response, array $args){
+      return $this->encapsular_response(function ($request, $response, $args){
+        $estadoFinal = $request->getParsedBody()['estadoFinal'];
+        $estadoInicial = $request->getParsedBOdy()['embaralhado'];
+
+        $teste = new BuscaEmProfundidade();
+
+        $teste->buscar(new Puzzle($estadoFinal, $estadoInicial));
+
+        var_dump($teste);
+
+        if($teste)
+          return HttpResponse::status200($teste);
+
+        return HttpResponse::status404($teste);
+
+      }, $request, $response, $args);
     }
 
 }
